@@ -8,16 +8,16 @@ num_lines = sum(1 for line in open(file))
 randomChars = string.ascii_letters + string.digits + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()'
 random.seed = (os.urandom(1024))
 count = 0
-url = '' # Phish site to flood
+website = '' # Phish site to flood
 send_stat = 0
 names = json.loads(open(file).read())
-print("- Initiating Flood against %s -" % (url))
+print("- Initiating Flood against %s -" % (website))
 for line in names:
 	nameExtention = ''.join(random.choice(string.digits))
 	count = count + 1
 	username = line.lower() + nameExtention + '@gmail.com' # Can be anything
 	password = ''.join(random.choice(randomChars) for i in range(8))
-	requests.post(url, allow_redirects=False, data={
+	requests.post(website, allow_redirects=False, data={
 	    'username': username,  # Websites username input
 	    'password': password  # Websites password input
 	})
